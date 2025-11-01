@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stylish Random Color Changer ✨</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      background-size: 200% 200%;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      transition: background 1s, color 1s;
+      animation: gradientShift 5s infinite alternate;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: left top; }
+      100% { background-position: right bottom; }
+    }
+
+    h1 {
+      font-size: 3em;
+      text-shadow: 0 0 15px rgba(255,255,255,0.7);
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(45deg, #ff0080, #ff8c00);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 0, 128, 0.6);
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">Stylish Random Color Changer 🌈</h1>
+  <button onclick="changeColors()">Change Colors</button>
+
+  <script>
+    function getRandomColor() {
+      return "#" + Math.floor(Math.random() * 16777215).toString(16);
+    }
+
+    function changeColors() {
+      const color1 = getRandomColor();
+      const color2 = getRandomColor();
+      const textColor = getRandomColor();
+      
+      document.body.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+      document.getElementById("title").style.color = textColor;
+      document.querySelector("button").style.background = `linear-gradient(45deg, ${color2}, ${color1})`;
+    }
+  </script>
+</body>
+</html>
+
